@@ -1,13 +1,15 @@
+import 'package:blossom/core/utils/app_position.dart';
+import 'package:blossom/core/utils/app_size_box.dart';
 import 'package:blossom/core/utils/app_string.dart';
 import 'package:blossom/features/onboarding/view/onboarding_connect_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/helper/navigation.dart';
-import '../../../core/utils/app_assets.dart';
-import '../../../core/utils/app_route.dart';
+import '../../../core/utils/app_assets_svg.dart';
+import '../../../core/route/app_route.dart';
+import '../../../core/utils/app_font_size.dart';
 import '../../../core/widget/custom_svg_wrapper.dart';
-import '../../../core/widget/default_app_bar.dart';
+import '../../../core/widget/app_logo.dart';
 
 class SplashView extends StatefulWidget {
   static const id = AppRoute.splash;
@@ -38,27 +40,27 @@ class _SplashViewState extends State<SplashView> {
     return Scaffold(
       body: Stack(
         children: [
-          CustomSvgWrapper(path: AppAssets.bgWave, fit: BoxFit.cover),
+          CustomSvgWrapper(path: AppAssetsSvg.bgWave, fit: BoxFit.cover),
           Positioned(
-            top: 274.1.h,
-            left: 21.99.w,
-            child: CustomSvgWrapper(path: AppAssets.rocket),
+            top: AppPosition.h274,
+            left: AppPosition.w21,
+            child: CustomSvgWrapper(path: AppAssetsSvg.rocket),
           ),
           Positioned(
-            top: 225.41.h,
-            left: 253.98.w,
-            child: CustomSvgWrapper(path: AppAssets.loveSplash),
+            top: AppPosition.h225,
+            left: AppPosition.w253,
+            child: CustomSvgWrapper(path: AppAssetsSvg.loveSplash),
           ),
           Positioned(
-            top: 594.05.h,
-            left: 335.26.w,
-            child: CustomSvgWrapper(path: AppAssets.stock),
+            top: AppPosition.h594,
+            left: AppPosition.w335,
+            child: CustomSvgWrapper(path: AppAssetsSvg.stock),
           ),
           SizedBox(
-            height: 345.h,
+            height: AppSizeBox.h345,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [DefaultAppBar()],
+              children: [AppLogo()],
             ),
           ),
           SizedBox(
@@ -68,14 +70,14 @@ class _SplashViewState extends State<SplashView> {
               children: [
                 Text(
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 55.sp),
+                  style: TextStyle(fontSize: AppFontSize.s55),
                   AppString.titleSplash,
                 ),
-                SizedBox(height: 8.97.h),
+                SizedBox(height: AppSizeBox.h8),
                 Text(
                   AppString.desSplash,
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 18.sp),
+                  style: TextStyle(fontSize: AppFontSize.s18),
                 ),
               ],
             ),
@@ -85,3 +87,110 @@ class _SplashViewState extends State<SplashView> {
     );
   }
 }
+
+/*
+import 'package:blossom/core/utils/app_position.dart';
+import 'package:blossom/core/utils/app_size_box.dart';
+import 'package:blossom/core/utils/app_string.dart';
+import 'package:blossom/features/onboarding/view/onboarding_connect_view.dart';
+import 'package:flutter/material.dart';
+
+import '../../../core/helper/navigation.dart';
+import '../../../core/utils/app_assets_svg.dart';
+import '../../../core/route/app_route.dart';
+import '../../../core/utils/app_font_size.dart';
+import '../../../core/widget/custom_svg_wrapper.dart';
+import '../../../core/widget/default_logo.dart';
+
+class SplashView extends StatefulWidget {
+  static const id = AppRoute.splash;
+
+  const SplashView({super.key});
+
+  @override
+  State<SplashView> createState() => _SplashViewState();
+}
+
+class _SplashViewState extends State<SplashView> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(
+      const Duration(seconds: 3),
+      () {
+        if (mounted) {
+          Navigation.goTo(
+            context,
+            const OnboardingConnectView(),
+            type: NavigationType.pushReplacement,
+          );
+        }
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          /// Background
+          const SizedBox.expand(
+            child: CustomSvgWrapper(
+              path: AppAssetsSvg.bgWave,
+              fit: BoxFit.cover,
+            ),
+          ),
+
+          /// Positioned elements
+          Positioned(
+            top: AppPosition.h274,
+            left: AppPosition.w21,
+            child: const CustomSvgWrapper(path: AppAssetsSvg.rocket),
+          ),
+          Positioned(
+            top: AppPosition.h225,
+            left: AppPosition.w253,
+            child: const CustomSvgWrapper(path: AppAssetsSvg.loveSplash),
+          ),
+          Positioned(
+            top: AppPosition.h594,
+            left: AppPosition.w335,
+            child: const CustomSvgWrapper(path: AppAssetsSvg.stock),
+          ),
+
+          /// Logo
+          SizedBox(
+            height: AppSizeBox.h345,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [DefaultLogo()],
+            ),
+          ),
+
+          /// Texts
+          SizedBox(
+            width: double.infinity,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  AppString.titleSplash,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: AppFontSize.s55),
+                ),
+                SizedBox(height: AppSizeBox.h8),
+                Text(
+                  AppString.desSplash,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: AppFontSize.s18),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+*/

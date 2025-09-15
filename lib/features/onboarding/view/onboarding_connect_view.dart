@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/utils/app_route.dart';
+import '../../../core/route/app_route.dart';
 
 class OnboardingConnectView extends StatelessWidget {
   static const id = AppRoute.onboardingConnect;
